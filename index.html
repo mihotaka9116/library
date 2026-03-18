@@ -10,10 +10,10 @@
 </head>
 <body>
 
-
     <header>
         <div class="container nav-container">
             <a href="#" class="logo">私の詩</a>
+            
             <nav class="desktop-nav">
                 <ul>
                     <li><a href="#concept">コンセプト</a></li>
@@ -22,11 +22,28 @@
                     <li><a href="#contact">お問い合わせ</a></li>
                 </ul>
             </nav>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="メニューを開閉する">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
         </div>
     </header>
 
- 
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="#concept">コンセプト</a></li>
+                <li><a href="#library">ライブラリー</a></li>
+                <li><a href="#authors">著者</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </div>
+
     <section class="hero">
+        <div class="hero-overlay"></div>
         <div class="hero-bg"></div>
         <div class="hero-content" data-aos="fade-up">
             <p class="hero-sub">Words & Heart</p>
@@ -34,74 +51,6 @@
         </div>
     </section>
 
-
-    <!-- Concept -->
-<section id="concept" class="section">
-    <div class="container grid-2">
-        <div class="concept-visual" data-aos="fade-right">
-            <p class="writing-vertical">言葉の欠片を、</p>
-            <p class="writing-vertical">拾い集めるように。</p>
-        </div>
-        <div class="concept-text" data-aos="fade-left">
-            <!-- 修正箇所 -->
-            <h2 class="section-title">コンセプト <span class="en-sub">Concept</span></h2>
-            <p>日々の喧騒の中で、ふと立ち止まらせてくれる言葉があります。<br>それは、誰かが流した「小さな海」のような、静かな詩の断片。</p>
-            <p>この場所は、私がこれまでの人生で出会い、心の奥に大切にしまってきた言葉たちを、一冊の本のように並べた私的な図書室です。</p>
-        </div>
-    </div>
-</section>
-
-<!-- Library -->
-<section id="library" class="section bg-white">
-    <div class="container">
-        <!-- 修正箇所 -->
-        <h2 class="section-title text-center">ライブラリー <span class="en-sub">Library</span></h2>
-        <div id="bookGrid" class="book-grid">
-            <!-- JSで本が自動挿入されます -->
-        </div>
-    </div>
-</section>
-
-<!-- Authors -->
-<section id="authors" class="section">
-    <div class="container">
-        <!-- 修正箇所 -->
-        <h2 class="section-title text-center">著者 <span class="en-sub">Authors</span></h2>
-        <div id="authorList" class="author-container">
-            <!-- JSで作者紹介が挿入されます -->
-        </div>
-    </div>
-</section>
-
-<!-- Contact -->
-<section id="contact" class="section">
-    <div class="container">
-        <!-- セクションタイトルを追加 -->
-        <h2 class="section-title text-center">お問い合わせ <span class="en-sub">Contact</span></h2>
-        <div class="contact-card" data-aos="zoom-in">
-            <!-- （以下、既存のフォーム内容） -->
-        </div>
-    </div>
-</section>
-    <!-- Footer -->
-    <footer>
-        <div class="container footer-content">
-            <div class="footer-left">
-                <p class="logo">My Poem</p>
-                <p class="footer-sub">A private library of words and fragments.</p>
-            </div>
-            <div class="footer-right">
-                <div class="footer-nav">
-                    <a href="#concept">Concept</a>
-                    <a href="#library">Library</a>
-                    <a href="#authors">Authors</a>
-                </div>
-                <p class="copyright">&copy; 2026 My Poem. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Modal for Book Detail -->
     <div id="poemModal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
