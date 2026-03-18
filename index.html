@@ -1,4 +1,4 @@
-お問い合わせ<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <!-- Header -->
+
     <header>
         <div class="container nav-container">
             <a href="#" class="logo">私の詩</a>
@@ -25,7 +25,7 @@
         </div>
     </header>
 
-    <!-- Hero -->
+ 
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content" data-aos="fade-up">
@@ -34,65 +34,55 @@
         </div>
     </section>
 
+
     <!-- Concept -->
-    <section id="concept" class="section">
-        <div class="container grid-2">
-            <div class="concept-visual" data-aos="fade-right">
-                <p class="writing-vertical">言葉の欠片を、</p>
-                <p class="writing-vertical">拾い集めるように。</p>
-            </div>
-            <div class="concept-text" data-aos="fade-left">
-                <h2 class="section-title">Concept</h2>
-                <p>日々の喧騒の中で、ふと立ち止まらせてくれる言葉があります。<br>それは、誰かが流した「小さな海」のような、静かな詩の断片。</p>
-                <p>この場所は、私がこれまでの人生で出会い、心の奥に大切にしまってきた言葉たちを、一冊の本のように並べた私的な図書室です。</p>
-            </div>
+<section id="concept" class="section">
+    <div class="container grid-2">
+        <div class="concept-visual" data-aos="fade-right">
+            <p class="writing-vertical">言葉の欠片を、</p>
+            <p class="writing-vertical">拾い集めるように。</p>
         </div>
-    </section>
-
-    <!-- Library -->
-    <section id="library" class="section bg-white">
-        <div class="container">
-            <h2 class="section-title text-center">Library</h2>
-            <div id="bookGrid" class="book-grid">
-                <!-- JSで本が自動挿入されます -->
-            </div>
+        <div class="concept-text" data-aos="fade-left">
+            <!-- 修正箇所 -->
+            <h2 class="section-title">コンセプト <span class="en-sub">Concept</span></h2>
+            <p>日々の喧騒の中で、ふと立ち止まらせてくれる言葉があります。<br>それは、誰かが流した「小さな海」のような、静かな詩の断片。</p>
+            <p>この場所は、私がこれまでの人生で出会い、心の奥に大切にしまってきた言葉たちを、一冊の本のように並べた私的な図書室です。</p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Authors -->
-    <section id="authors" class="section">
-        <div class="container">
-            <h2 class="section-title text-center">Authors</h2>
-            <div id="authorList" class="author-container">
-                <!-- JSで作者紹介が挿入されます -->
-            </div>
+<!-- Library -->
+<section id="library" class="section bg-white">
+    <div class="container">
+        <!-- 修正箇所 -->
+        <h2 class="section-title text-center">ライブラリー <span class="en-sub">Library</span></h2>
+        <div id="bookGrid" class="book-grid">
+            <!-- JSで本が自動挿入されます -->
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Contact -->
-    <section id="contact" class="section">
-        <div class="container">
-            <div class="contact-card" data-aos="zoom-in">
-                <div class="contact-info">
-                    <i data-lucide="mail" class="mail-icon"></i>
-                    <h3>お問い合わせ</h3>
-                    <p>ご意見、ご感想、お仕事のご依頼など、<br>お気軽にお問い合わせください。</p>
-                </div>
-                <form id="contactForm" class="contact-form">
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" placeholder="お名前" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Message</label>
-                        <textarea placeholder="メッセージをどうぞ" rows="4" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit">メッセージを送る <i data-lucide="feather"></i></button>
-                </form>
-            </div>
+<!-- Authors -->
+<section id="authors" class="section">
+    <div class="container">
+        <!-- 修正箇所 -->
+        <h2 class="section-title text-center">著者 <span class="en-sub">Authors</span></h2>
+        <div id="authorList" class="author-container">
+            <!-- JSで作者紹介が挿入されます -->
         </div>
-    </section>
+    </div>
+</section>
 
+<!-- Contact -->
+<section id="contact" class="section">
+    <div class="container">
+        <!-- セクションタイトルを追加 -->
+        <h2 class="section-title text-center">お問い合わせ <span class="en-sub">Contact</span></h2>
+        <div class="contact-card" data-aos="zoom-in">
+            <!-- （以下、既存のフォーム内容） -->
+        </div>
+    </div>
+</section>
     <!-- Footer -->
     <footer>
         <div class="container footer-content">
