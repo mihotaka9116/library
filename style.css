@@ -2,12 +2,10 @@
     --navy: #0a1128;
     --white: #ffffff;
     --slate: #64748b;
-    --beige: #fffaf0; /* モーダル用に追加 */
+    --beige: #fffaf0;
     --transition: 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-    --menu-transition: 0.3s ease; /* メニュー用は速めに */
 }
 
-/* --- Base & Reset (既存) --- */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Noto Serif JP', serif; background: #fcfcfc; color: var(--navy); overflow-x: hidden; scroll-behavior: smooth; }
 .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
@@ -15,58 +13,50 @@ body { font-family: 'Noto Serif JP', serif; background: #fcfcfc; color: var(--na
 .bg-white { background: var(--white); }
 .text-center { text-align: center; }
 
-/* --- Header & Nav (レスポンシブ対応) --- */
+/* Header & Nav */
 header { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(255,255,255,0.8); backdrop-filter: blur(10px); border-bottom: 1px solid #f1f5f9; height: 80px; display: flex; align-items: center; }
-.nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; position: relative; }
-.logo { font-size: 1.4rem; font-weight: bold; text-decoration: none; color: var(--navy); letter-spacing: -1px; z-index: 110; } /* ロゴをメニューより上に */
+.nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+.logo { font-size: 1.4rem; font-weight: bold; text-decoration: none; color: var(--navy); letter-spacing: -1px; z-index: 110; }
 
-/* PCナビ: スマホでは隠す */
-.desktop-nav { display: block; }
 .desktop-nav ul { display: flex; gap: 2.5rem; list-style: none; }
 .desktop-nav a { text-decoration: none; color: var(--slate); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1rem; transition: 0.3s; font-family: sans-serif; }
 .desktop-nav a:hover { color: var(--navy); }
 
-/* ハンバーガーボタン: PCでは隠す */
+/* Hamburger Menu */
 .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 10px; z-index: 110; flex-direction: column; gap: 6px; }
-.menu-toggle .bar { display: block; width: 25px; height: 2px; background-color: var(--navy); transition: var(--menu-transition); }
-
-/* ハンバーガーのアニメーション (JSで.activeクラスを付与) */
+.menu-toggle .bar { display: block; width: 25px; height: 2px; background-color: var(--navy); transition: 0.3s; }
 .menu-toggle.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
 .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
 .menu-toggle.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-/* スマホ用メニューオーバーレイ */
-.mobile-menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 105; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: var(--menu-transition); }
+.mobile-menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(255,255,255,0.98); z-index: 105; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: 0.3s; }
 .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
 .mobile-nav ul { list-style: none; text-align: center; }
-.mobile-nav li { margin: 2.5rem 0; }
-.mobile-nav a { text-decoration: none; color: var(--navy); font-size: 1.5rem; font-weight: bold; }
+.mobile-nav li { margin: 2rem 0; }
+.mobile-nav a { text-decoration: none; color: var(--navy); font-size: 1.8rem; font-weight: bold; }
 
-/* レスポンシブ (ブレイクポイント: 768px) */
-@media (max-width: 768px) {
-    .desktop-nav { display: none; } /* PCナビ隠す */
-    .menu-toggle { display: flex; } /* ハンバーガー出す */
-    .section { padding: 5rem 0; }
-    .hero-content h1 { font-size: 3rem; }
-    .grid-2, .contact-card, .author-card { grid-template-columns: 1fr; flex-direction: column; gap: 2rem; }
+/* Hero Section */
+.hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #eee; }
+.hero-bg { 
+    position: absolute; inset: 0; 
+    /* サイトイメージに近い「開いた古い本」の画像 */
+    background: url('https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=2000&auto=format&fit=crop') center/cover;
+    z-index: 1;
 }
+.hero-overlay { position: absolute; inset: 0; background: rgba(255, 255, 255, 0.65); z-index: 2; }
+.hero-content { position: relative; text-align: center; color: var(--navy); z-index: 3; }
+.hero-content h1 { font-size: clamp(3rem, 10vw, 5.5rem); letter-spacing: -2px; }
+.hero-sub { font-style: italic; color: var(--slate); font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; }
 
-/* --- Hero (写真調整) --- */
-.hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; background: #fff; overflow: hidden; }
-.hero-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1530103043960-ef38714abb15?auto=format&fit=crop&q=80&w=2000') center/cover; }
+/* Section Title */
+.section-title { font-size: 2.8rem; margin-bottom: 4rem; position: relative; letter-spacing: -1px; }
 
-/* ★追加: 写真を白っぽくするオーバーレイ */
-.hero-overlay { position: absolute; inset: 0; background: rgba(255, 255, 255, 0.7); /* 白の不透明度70% */ z-index: 1; }
-.hero-content { position: relative; text-align: center; color: var(--navy); z-index: 2; /* コンテンツを上に */ }
-.hero-content h1 { font-size: 5rem; margin-top: 0.5rem; }
-.hero-sub { font-style: italic; color: var(--slate); font-size: 1.2rem; font-family: sans-serif; }
+/* Grid & Items */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.writing-vertical { writing-mode: vertical-rl; font-size: 1.4rem; height: 250px; border-right: 1px solid #e2e8f0; padding-right: 1rem; margin: 0 10px; }
+.concept-visual { background: #f8fafc; padding: 4rem; border-radius: 2rem; display: flex; justify-content: center; }
 
-/* --- セクションタイトル (修正箇所: 既存にen-subスタイル追加) --- */
-.section-title { font-size: 2.2rem; margin-bottom: 3rem; display: flex; flex-direction: column; gap: 0.5rem; }
-.text-center.section-title { align-items: center; }
-.en-sub { font-size: 0.8rem; font-family: sans-serif; color: var(--slate); text-transform: uppercase; letter-spacing: 0.2rem; font-weight: normal; }
-
-/* --- Library & Books (既存) --- */
+/* Book Grid & Animation */
 .book-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 3rem; margin-top: 4rem; justify-items: center; }
 .book-item { width: 180px; height: 260px; perspective: 1000px; cursor: pointer; }
 .book-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform var(--transition); }
@@ -76,33 +66,38 @@ header { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(25
 .book-cover { z-index: 2; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.5rem; transform-origin: left; transition: transform var(--transition); border-left: 4px solid rgba(0,0,0,0.3); }
 .book-item:hover .book-cover { transform: rotateY(-145deg); }
 
-/* --- Authors (既存) --- */
-.author-card { display: flex; gap: 3rem; background: white; padding: 3rem; border-radius: 2rem; margin-bottom: 3rem; border: 1px solid #f1f5f9; align-items: center; }
+/* Authors */
+.author-card { display: flex; gap: 3rem; background: white; padding: 3rem; border-radius: 2.5rem; margin-bottom: 3rem; border: 1px solid #f1f5f9; align-items: center; }
 .author-card.reverse { flex-direction: row-reverse; }
-.author-img { width: 250px; height: 250px; border-radius: 1.5rem; object-fit: cover; filter: grayscale(1); transition: 0.5s; }
-.author-card:hover .author-img { filter: grayscale(0); transform: scale(1.02); }
+.author-img { width: 220px; height: 220px; border-radius: 50%; object-fit: cover; filter: grayscale(1); transition: 0.5s; }
+.author-card:hover .author-img { filter: grayscale(0); }
 
-/* --- Contact (既存) --- */
-.contact-card { background: var(--navy); color: white; border-radius: 3rem; display: grid; grid-template-columns: 1fr 1.5fr; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
-.contact-info { padding: 4rem; background: rgba(255,255,255,0.03); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-.mail-icon { width: 4rem; height: 4rem; color: rgba(255,255,255,0.1); margin-bottom: 2rem; }
+/* Contact Form */
+.contact-card { background: var(--navy); color: white; border-radius: 3rem; display: grid; grid-template-columns: 1fr 1.5fr; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+.contact-info { padding: 4rem; background: rgba(255,255,255,0.05); }
 .contact-form { padding: 4rem; background: white; color: var(--navy); }
 .form-group { margin-bottom: 1.5rem; }
-.form-group label { display: block; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; color: var(--slate); margin-bottom: 0.5rem; font-family: sans-serif; }
-.form-group input, .form-group textarea { width: 100%; border: none; border-bottom: 1px solid #e2e8f0; padding: 0.7rem 0; outline: none; transition: 0.3s; font-family: inherit; font-size: 1rem; }
-.form-group input:focus, .form-group textarea:focus { border-color: var(--navy); }
-.btn-submit { background: var(--navy); color: white; border: none; padding: 1rem 2rem; border-radius: 2rem; cursor: pointer; display: flex; align-items: center; gap: 0.8rem; font-weight: bold; margin-top: 1rem; font-size: 1rem; }
+.form-group label { display: block; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; margin-bottom: 0.5rem; color: var(--slate); }
+.form-group input, .form-group textarea { width: 100%; border: none; border-bottom: 1px solid #e2e8f0; padding: 0.7rem 0; outline: none; font-size: 1rem; font-family: inherit; }
+.btn-submit { background: var(--navy); color: white; border: none; padding: 1rem 2.5rem; border-radius: 2rem; cursor: pointer; font-weight: bold; }
 
-/* --- Modal & Footer (既存) --- */
-.modal { display: none; position: fixed; inset: 0; background: rgba(10, 17, 40, 0.7); backdrop-filter: blur(8px); z-index: 1000; align-items: center; justify-content: center; padding: 2rem; }
-.modal-content { background: white; max-width: 800px; width: 100%; border-radius: 2rem; position: relative; overflow: hidden; animation: modalFade 0.5s ease; }
-@keyframes modalFade { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-.modal-inner { display: flex; min-height: 400px; }
-.close-modal { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 2.5rem; cursor: pointer; z-index: 10; color: #cbd5e1; transition: 0.3s; line-height: 1; }
-.close-modal:hover { color: var(--navy); }
+/* Modal */
+.modal { display: none; position: fixed; inset: 0; background: rgba(10, 17, 40, 0.75); backdrop-filter: blur(8px); z-index: 1000; align-items: center; justify-content: center; padding: 2rem; }
+.modal-content { background: white; max-width: 800px; width: 100%; border-radius: 2rem; position: relative; overflow: hidden; }
+.modal-inner { display: flex; min-height: 450px; }
+.close-modal { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 2.5rem; cursor: pointer; z-index: 10; color: #cbd5e1; }
 
-footer { background: var(--navy); color: white; padding: 4rem 0; border-top: 1px solid rgba(255,255,255,0.1); }
-.footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; }
-.footer-nav { display: flex; gap: 2rem; margin-bottom: 1rem; }
-.footer-nav a { color: #94a3b8; text-decoration: none; font-size: 0.8rem; font-family: sans-serif; }
-.copyright { font-size: 0.7rem; color: #475569; letter-spacing: 1px; font-family: sans-serif; }
+/* Footer */
+footer { padding: 4rem 0; border-top: 1px solid #eee; text-align: center; }
+.footer-content .logo { display: block; margin-bottom: 1rem; }
+.copyright { font-size: 0.8rem; color: var(--slate); }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .desktop-nav { display: none; }
+    .menu-toggle { display: flex; }
+    .grid-2, .contact-card, .author-card { grid-template-columns: 1fr; flex-direction: column; }
+    .author-img { width: 150px; height: 150px; }
+    .section { padding: 4rem 0; }
+    .modal-inner { flex-direction: column; }
+}
