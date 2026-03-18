@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>私の詩 - Digital Library</title>
+    <title>My Poem - Digital Library</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Shippori+Mincho&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -12,18 +12,18 @@
 
     <header>
         <div class="container nav-container">
-            <a href="#" class="logo">私の詩</a>
+            <a href="#" class="logo">My Poem</a>
             
             <nav class="desktop-nav">
                 <ul>
-                    <li><a href="#concept">コンセプト</a></li>
-                    <li><a href="#library">ライブラリー</a></li>
-                    <li><a href="#authors">著者</a></li>
-                    <li><a href="#contact">お問い合わせ</a></li>
+                    <li><a href="#concept">Concept</a></li>
+                    <li><a href="#library">Library</a></li>
+                    <li><a href="#authors">Authors</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
 
-            <button class="menu-toggle" id="menuToggle" aria-label="メニューを開閉する">
+            <button class="menu-toggle" id="menuToggle">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -31,25 +31,89 @@
         </div>
     </header>
 
+    <!-- Mobile Menu -->
     <div class="mobile-menu-overlay" id="mobileMenu">
         <nav class="mobile-nav">
             <ul>
-                <li><a href="#concept">コンセプト</a></li>
-                <li><a href="#library">ライブラリー</a></li>
-                <li><a href="#authors">著者</a></li>
-                <li><a href="#contact">お問い合わせ</a></li>
+                <li><a href="#concept" onclick="toggleMenu()">Concept</a></li>
+                <li><a href="#library" onclick="toggleMenu()">Library</a></li>
+                <li><a href="#authors" onclick="toggleMenu()">Authors</a></li>
+                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
             </ul>
         </nav>
     </div>
 
+    <!-- Hero -->
     <section class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-bg"></div>
         <div class="hero-content" data-aos="fade-up">
-            <p class="hero-sub">Words & Heart</p>
-            <h1>私の詩</h1>
+            <p class="hero-sub">Fragments of Words</p>
+            <h1>My Poem</h1>
         </div>
     </section>
+
+    <!-- Concept -->
+    <section id="concept" class="section">
+        <div class="container grid-2">
+            <div class="concept-visual" data-aos="fade-right">
+                <p class="writing-vertical">言葉の欠片を、</p>
+                <p class="writing-vertical">拾い集めるように。</p>
+            </div>
+            <div class="concept-text" data-aos="fade-left">
+                <h2 class="section-title">Concept</h2>
+                <p>日々の喧騒の中で、ふと立ち止まらせてくれる言葉があります。<br>それは、誰かが流した「小さな海」のような、静かな詩の断片。</p>
+                <p>この場所は、私がこれまでの人生で出会い、心の奥に大切にしまってきた言葉たちを、一冊の本のように並べた私的な図書室です。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Library -->
+    <section id="library" class="section bg-white">
+        <div class="container">
+            <h2 class="section-title text-center">Library</h2>
+            <div id="bookGrid" class="book-grid"></div>
+        </div>
+    </section>
+
+    <!-- Authors -->
+    <section id="authors" class="section">
+        <div class="container">
+            <h2 class="section-title text-center">Authors</h2>
+            <div id="authorList" class="author-container"></div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section bg-white">
+        <div class="container">
+            <h2 class="section-title text-center">Contact</h2>
+            <div class="contact-card" data-aos="zoom-in">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p>詩の感想や、あなたの大切な言葉について。<br>お気軽にお寄せください。</p>
+                </div>
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea placeholder="Your Message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <p class="logo">My Poem</p>
+            <p class="copyright">&copy; 2026 My Poem. Digital Library.</p>
+        </div>
+    </footer>
 
     <div id="poemModal" class="modal">
         <div class="modal-content">
