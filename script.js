@@ -161,24 +161,41 @@ window.onclick = (event) => {
     }
 };
 
-// --- 6. スマホメニュー制御ロジック ---
+// --- 6. スマホメニュー制御ロジック (修正版) ---
+
+// メニューの状態を切り替える関数
 function toggleMenu() {
-    menuToggle.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
+    const isOpened = menuToggle.classList.contains('active');
     
-    if (mobileMenu.classList.contains('active')) {
-        document.body.style.overflow = 'hidden';
+    if (!isOpened) {
+        // メニューを開く
+        menuToggle.classList.add('active');
+        mobileMenu.classList.add('active');
+        document.body.style.overflow = 'hidden'; // スクロール禁止
     } else {
-        document.body.style.overflow = '';
+        // メニューを閉じる
+        menuToggle.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = ''; // スクロール再開
     }
 }
 
+// ハンバーガーボタンをクリックした時
 if (menuToggle) {
-    menuToggle.addEventListener('click', toggleMenu);
+    menuToggle.onclick = (e) => {
+        e.preventDefault();
+        toggleMenu();
+    };
 }
 
+// メニュー内の各リンクをクリックした時（自動で閉じる）
 mobileMenuLinks.forEach(link => {
-    link.addEventListener('click', toggleMenu);
+    link.onclick = () => {
+        // リンク先へ飛ぶ前にメニューを閉じる
+        menuToggle.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    };
 });
 
 
