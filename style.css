@@ -101,3 +101,35 @@ footer { padding: 4rem 0; border-top: 1px solid #eee; text-align: center; }
     .section { padding: 4rem 0; }
     .modal-inner { flex-direction: column; }
 }
+
+/* --- Authors 修正版 --- */
+.author-card { 
+    display: flex; 
+    gap: 3rem; 
+    background: white; 
+    padding: 3rem; 
+    border-radius: 2.5rem; 
+    margin-bottom: 3rem; 
+    border: 1px solid #f1f5f9; 
+    align-items: center; 
+    /* 追加: 画面幅が狭い時に要素を折り返す */
+    flex-wrap: wrap; 
+}
+
+.author-info {
+    flex: 1;
+    /* 追加: 最低限の幅を確保して縦一列になるのを防ぐ */
+    min-width: 280px; 
+}
+
+.author-card.reverse { flex-direction: row-reverse; }
+
+@media (max-width: 768px) {
+    .author-card { 
+        flex-direction: column; 
+        text-align: center;
+        padding: 2rem;
+    }
+    .author-card.reverse { flex-direction: column; }
+    .author-info { min-width: 100%; }
+}
