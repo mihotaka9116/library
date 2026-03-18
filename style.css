@@ -76,3 +76,24 @@ footer { background: var(--navy); color: white; padding: 4rem 0; border-top: 1px
     .grid-2, .contact-card, .author-card { grid-template-columns: 1fr; flex-direction: column; }
     .hero-content h1 { font-size: 3rem; }
 }
+
+.section-title {
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.text-center.section-title {
+    align-items: center;
+}
+
+.en-sub {
+    font-size: 0.8rem;
+    font-family: sans-serif;
+    color: var(--slate);
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-weight: normal;
+}
