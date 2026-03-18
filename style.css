@@ -22,7 +22,7 @@ header { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(25
 
 /* Hero */
 .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; background: #000; }
-.hero-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1530103043960-ef38714abb15?auto=format&fit=crop&q=80&w=2000') center/cover; opacity: 0.6; }
+.hero-bg { position: absolute; inset: 0; background: url('baloon.jpg') center/cover; opacity: 0.6; }
 .hero-content { position: relative; text-align: center; color: var(--navy); }
 .hero-content h1 { font-size: 5rem; margin-top: 0.5rem; }
 .hero-sub { font-style: italic; color: var(--slate); font-size: 1.2rem; }
