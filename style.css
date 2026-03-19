@@ -195,37 +195,89 @@ html, body {
     flex-direction: column;
 }
 
-/* --- コンタクトカードの右端の「線」を消す修正 --- */
-
-.contact-card {
-    /* 1. 影を完全にゼロにする（影が端で線に見えるのを防ぐ） */
-    box-shadow: none;
-    
-    /* 2. 枠線を確実に消す */
+/* --- Contact Form (修正決定版) --- */
+.contact-card { 
+    background: var(--navy); 
+    color: white; 
+    border-radius: 3rem; 
+    display: grid; 
+    grid-template-columns: 1fr 1.5fr; 
+    overflow: hidden; 
     border: none;
-    outline: none;
-    
-    /* 3. 親要素の背景色による干渉を防ぐ */
-    margin: 0 auto;
-    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.03); /* 非常に薄い影に抑制 */
 }
 
-.contact-form {
-    /* 4. フォーム自体の枠線もリセット */
-    border: none;
-    
-    /* 5. わずかに（0.5px〜1px）だけ要素を広げて、
-       親要素の背景色が右端から漏れ出るのを防ぐ */
-    margin-right: -1px; 
-    padding-right: calc(4rem + 1px);
+.contact-info { 
+    padding: 4rem; 
+    background: rgba(255,255,255,0.05); 
 }
 
-/* スマホ・iPad用の微調整 */
+.contact-form { 
+    padding: 4rem; 
+    background: white; 
+    color: var(--navy);
+    
+    /* 【重要】右側の「濃い線」を消すための魔法の2行 */
+    margin-right: -2px;     /* 右側に2px突き出させて、下の紺色を隠す */
+    position: relative;     /* 重なり順を確実にする */
+    z-index: 1;
+    border: none;
+}
+
+.form-group { margin-bottom: 1.5rem; }
+
+.form-group label { 
+    display: block; 
+    font-size: 0.75rem; 
+    font-weight: bold; 
+    text-transform: uppercase; 
+    margin-bottom: 0.5rem; 
+    color: var(--slate); 
+}
+
+.form-group input, 
+.form-group textarea { 
+    width: 100%; 
+    border: none; 
+    border-bottom: 1px solid #e2e8f0; 
+    padding: 0.7rem 0; 
+    outline: none; 
+    font-size: 1rem; 
+    font-family: inherit; 
+    background: transparent;
+}
+
+.btn-submit { 
+    background: var(--navy); 
+    color: white; 
+    border: none; 
+    padding: 1rem 2.5rem; 
+    border-radius: 2rem; 
+    cursor: pointer; 
+    font-weight: bold; 
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* スマホ・iPad用のレスポンシブ修正 */
 @media (max-width: 1180px) {
+    .contact-card { 
+        display: block; /* グリッド解除 */
+        border-radius: 2rem;
+    }
+    
     .contact-form {
         margin-right: 0;
-        padding-right: 1.5rem;
-        /* スマホ時は下が紺色になるのを防ぐため、下にも-1px */
-        margin-bottom: -1px; 
+        /* スマホ時は下側に線が出るのを防ぐため、下を1px伸ばす */
+        margin-bottom: -2px; 
+        padding: 3rem 1.5rem;
+    }
+    
+    .contact-info {
+        padding: 3rem 1.5rem;
     }
 }
