@@ -195,7 +195,7 @@ html, body {
     flex-direction: column;
 }
 
-/* --- Contact Card 修正版（PC） --- */
+/* --- Contact Card 再修正版 --- */
 .contact-card { 
     background: var(--navy); 
     color: white; 
@@ -203,23 +203,29 @@ html, body {
     display: grid; 
     grid-template-columns: 1fr 1.5fr; 
     overflow: hidden; 
-    /* 修正: 強い影を、非常に薄く柔らかい影に変更 */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+    
+    /* 修正箇所：ぼかし距離を大きくし(60px)、透明度を極限まで下げる(0.03) */
+    /* これにより「線」ではなく「ぼんやりとした空気感」になります */
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.03); 
+    
+    /* 境界線が線として見えている可能性を排除 */
+    border: none; 
 }
 
-.contact-info { 
-    padding: 4rem; 
-    background: rgba(255,255,255,0.03); 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
-    text-align: center; 
-}
-
-/* 右側のフォームエリアを完全に白く */
+/* フォーム側のエリア */
 .contact-form { 
     padding: 4rem; 
-    background-color: #ffffff;
-    color: var(--navy); 
+    background-color: #ffffff; 
+    color: var(--navy);
+    /* フォーム側にも境界線がないことを明示 */
+    border: none;
+}
+
+/* スマホ・iPad用の調整（@media (max-width: 768px) 内） */
+@media (max-width: 768px) {
+    .contact-card {
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02); /* スマホではさらに薄く */
+        margin: 0 auto;
+        border: none;
+    }
 }
