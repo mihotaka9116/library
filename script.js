@@ -58,44 +58,48 @@ const authors = [
     }
 ];
 
-// --- 2. DOM要素の取得 ---
-const bookGrid = document.getElementById('bookGrid');
-const authorList = document.getElementById('authorList');
-const poemModal = document.getElementById('poemModal');
-const modalBody = document.getElementById('modalBody');
-const menuToggle = document.getElementById('menuToggle');
-const mobileMenu = document.getElementById('mobileMenu');
-const mobileMenuLinks = document.querySelectorAll('.mobile-nav a');
+// --- 2. メニュー制御関数 (定義を先に) ---
+function initMenu() {
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (!menuToggle || !mobileMenu) return;
 
-// --- 3. メニュー制御 ---
-function toggleMenu() {
-    const isOpen = mobileMenu.classList.contains('active');
-    if (!isOpen) {
-        menuToggle.classList.add('active');
-        mobileMenu.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    } else {
-        menuToggle.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        document.body.style.overflow = '';
-    }
+    // メニューを開閉する関数
+    const toggleMenu = () => {
+        const isOpen = mobileMenu.classList.contains('active');
+        if (!isOpen) {
+            menuToggle.classList.add('active');
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        } else {
+            menuToggle.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    };
+
+    // ボタン自体のクリックイベント
+    menuToggle.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation(); // イベントの伝播を止める
+        toggleMenu();
+    };
+
+    // メニュー内のリンクをクリックした時に閉じる
+    const links = mobileMenu.querySelectorAll('a');
+    links.forEach(link => {
+        link.onclick = () => {
+            menuToggle.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+    });
 }
 
-menuToggle.addEventListener('click', (e) => {
-    e.preventDefault();
-    toggleMenu();
-});
-
-mobileMenuLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        menuToggle.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-});
-
-// --- 4. 本のレンダリング ---
+// --- 3. 本のレンダリング ---
 function renderBooks() {
+    const bookGrid = document.getElementById('bookGrid');
     if (!bookGrid) return;
     bookGrid.innerHTML = '';
     poems.forEach((poem, index) => {
@@ -120,8 +124,9 @@ function renderBooks() {
     });
 }
 
-// --- 5. 作者のレンダリング ---
+// --- 4. 作者のレンダリング ---
 function renderAuthors() {
+    const authorList = document.getElementById('authorList');
     if (!authorList) return;
     authorList.innerHTML = '';
     authors.forEach((author, index) => {
@@ -145,8 +150,12 @@ function renderAuthors() {
     });
 }
 
-// --- 6. モーダル制御 ---
+// --- 5. モーダル制御 ---
 function openPoemModal(poem) {
+    const poemModal = document.getElementById('poemModal');
+    const modalBody = document.getElementById('modalBody');
+    if (!poemModal || !modalBody) return;
+
     modalBody.innerHTML = `
         <div style="flex: 1; background: ${poem.coverColor}; color: white; padding: 4rem; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
             <h2 style="font-size: 2.2rem; margin-bottom: 1rem;">${poem.title}</h2>
@@ -163,12 +172,20 @@ function openPoemModal(poem) {
     poemModal.style.display = 'flex';
 }
 
-document.querySelector('.close-modal').onclick = () => poemModal.style.display = 'none';
-window.onclick = (event) => { if (event.target == poemModal) poemModal.style.display = 'none'; };
+// モーダル閉じるイベントの登録
+document.addEventListener('DOMContentLoaded', () => {
+    const closeModal = document.querySelector('.close-modal');
+    const poemModal = document.getElementById('poemModal');
+    if (closeModal) closeModal.onclick = () => poemModal.style.display = 'none';
+    window.onclick = (event) => { if (event.target == poemModal) poemModal.style.display = 'none'; };
+});
 
-// --- 7. 初期化 ---
+// --- 6. 初期化 ---
 window.onload = () => {
+    initMenu(); // メニューを初期化
     renderBooks();
     renderAuthors();
-    if (typeof AOS !== 'undefined') AOS.init({ duration: 1000, once: true });
+    if (typeof AOS !== 'undefined') {
+        AOS.init({ duration: 1000, once: true });
+    }
 };
