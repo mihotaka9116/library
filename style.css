@@ -195,68 +195,71 @@ html, body {
     flex-direction: column;
 }
 
-/* --- Contact Form (右側の線を消す修正版) --- */
+/* --- Contact Form 統一デザイン --- */
+
 .contact-card { 
     background: var(--navy); 
     color: white; 
-    border-radius: 3rem; 
-    display: grid; 
-    grid-template-columns: 1fr 1.5fr; 
+    border-radius: 2rem; /* 角丸を少し控えめにし、隙間が出にくくする */
     overflow: hidden; 
+    display: flex; /* gridからflexに変更（隙間対策に強力） */
+    flex-direction: column; /* 基本は縦並び */
     border: none;
-    /* 影が線に見えないよう、極めて薄く設定 */
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    margin: 0 auto;
 }
 
 .contact-info { 
-    padding: 4rem; 
-    background: rgba(255,255,255,0.05); 
+    padding: 3rem 2rem; 
+    background: var(--navy); /* rgbaを透過させず、ベタ塗りにして境界を消す */
+    text-align: center;
+    width: 100%;
 }
 
 .contact-form { 
-    padding: 4rem; 
+    padding: 3rem 2rem; 
     background: white; 
     color: var(--navy);
-    position: relative;
+    width: 100%;
     border: none;
-    
-    /* 【解決策】右端の紺色を完全に隠すための設定 */
-    margin-right: -5px;     /* 右にわざとはみ出させて紺色を隠す */
-    padding-right: calc(4rem + 5px); /* はみ出した分、内側の余白を調整 */
-    z-index: 2;             /* 紺色の上に確実に重ねる */
+    /* 角丸の隙間から下の色が漏れないよう、上端に1pxだけ重なりを作る */
+    margin-top: -1px; 
 }
 
-/* 入力フィールドの境界線調整 */
+/* PCサイズ（1024px以上）の時だけ横並びにする */
+@media (min-width: 1024px) {
+    .contact-card { 
+        flex-direction: row; /* 横並び */
+        align-items: stretch;
+    }
+    .contact-info { 
+        flex: 1; 
+        text-align: left;
+        padding: 4rem;
+    }
+    .contact-form { 
+        flex: 1.5; 
+        margin-top: 0;
+        margin-left: -1px; /* 横並び時は左側に重ねて線を消す */
+        padding: 4rem;
+    }
+}
+
+/* 入力欄の微調整（線を細く、スッキリさせる） */
 .form-group input, 
 .form-group textarea { 
     width: 100%; 
     border: none; 
     border-bottom: 1px solid #e2e8f0; 
-    padding: 0.7rem 0; 
+    padding: 0.8rem 0; 
     outline: none; 
     font-size: 1rem; 
-    font-family: inherit; 
     background: transparent;
-    border-radius: 0; /* 角丸による不要な線を消す */
+    transition: border-color 0.3s;
 }
 
-/* スマホ・iPad用のレスポンシブ修正 */
-@media (max-width: 1180px) {
-    .contact-card { 
-        display: block; 
-        border-radius: 2rem;
-        width: 100%;
-    }
-    
-    .contact-form {
-        margin-right: 0;
-        /* スマホ時は下側に線が出るのを防ぐため、下を少し伸ばす */
-        margin-bottom: -5px; 
-        padding: 3rem 1.5rem calc(3rem + 5px) 1.5rem;
-        background: white;
-    }
-    
-    .contact-info {
-        padding: 3rem 1.5rem;
-    }
+.form-group input:focus, 
+.form-group textarea:focus {
+    border-bottom-color: var(--navy);
 }
