@@ -39,12 +39,18 @@ header { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(25
 .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #eee; }
 .hero-bg { 
     position: absolute; inset: 0; 
-    /* サイトイメージに近い「開いた古い本」の画像 */
     background: url('galasu.jpg') center/cover;
     z-index: 1;
 }
-.hero-overlay { position: absolute; inset: 0; background: rgba(255, 255, 255, 0.65); z-index: 2; }
-.hero-content { position: relative; text-align: center; color: var(--navy); z-index: 3; }
+.hero-overlay { 
+    position: absolute; inset: 0; 
+    background: rgba(255, 255, 255, 0); /* 曇りを除去 */
+    z-index: 2; 
+}
+.hero-content { 
+    position: relative; text-align: center; color: var(--navy); z-index: 3; 
+    text-shadow: 0 0 15px rgba(255,255,255,0.7);
+}
 .hero-content h1 { font-size: clamp(3rem, 10vw, 5.5rem); letter-spacing: -2px; }
 .hero-sub { font-style: italic; color: var(--slate); font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; }
 
@@ -56,7 +62,7 @@ header { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(25
 .writing-vertical { writing-mode: vertical-rl; font-size: 1.4rem; height: 250px; border-right: 1px solid #e2e8f0; padding-right: 1rem; margin: 0 10px; }
 .concept-visual { background: #f8fafc; padding: 4rem; border-radius: 2rem; display: flex; justify-content: center; }
 
-/* Book Grid & Animation */
+/* Book Grid */
 .book-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 3rem; margin-top: 4rem; justify-items: center; }
 .book-item { width: 180px; height: 260px; perspective: 1000px; cursor: pointer; }
 .book-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform var(--transition); }
@@ -67,8 +73,9 @@ header { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(25
 .book-item:hover .book-cover { transform: rotateY(-145deg); }
 
 /* Authors */
-.author-card { display: flex; gap: 3rem; background: white; padding: 3rem; border-radius: 2.5rem; margin-bottom: 3rem; border: 1px solid #f1f5f9; align-items: center; }
+.author-card { display: flex; gap: 3rem; background: white; padding: 3rem; border-radius: 2.5rem; margin-bottom: 3rem; border: 1px solid #f1f5f9; align-items: center; flex-wrap: wrap; }
 .author-card.reverse { flex-direction: row-reverse; }
+.author-info { flex: 1; min-width: 280px; }
 .author-img { width: 220px; height: 220px; border-radius: 50%; object-fit: cover; filter: grayscale(1); transition: 0.5s; }
 .author-card:hover .author-img { filter: grayscale(0); }
 
@@ -96,55 +103,11 @@ footer { padding: 4rem 0; border-top: 1px solid #eee; text-align: center; }
 @media (max-width: 768px) {
     .desktop-nav { display: none; }
     .menu-toggle { display: flex; }
-    .grid-2, .contact-card, .author-card { grid-template-columns: 1fr; flex-direction: column; }
+    .grid-2, .contact-card { grid-template-columns: 1fr; }
+    .author-card { flex-direction: column; text-align: center; padding: 2rem; }
+    .author-card.reverse { flex-direction: column; }
+    .author-info { min-width: 100%; }
     .author-img { width: 150px; height: 150px; }
     .section { padding: 4rem 0; }
     .modal-inner { flex-direction: column; }
-}
-
-/* --- Authors 修正版 --- */
-.author-card { 
-    display: flex; 
-    gap: 3rem; 
-    background: white; 
-    padding: 3rem; 
-    border-radius: 2.5rem; 
-    margin-bottom: 3rem; 
-    border: 1px solid #f1f5f9; 
-    align-items: center; 
-    /* 追加: 画面幅が狭い時に要素を折り返す */
-    flex-wrap: wrap; 
-}
-
-.author-info {
-    flex: 1;
-    /* 追加: 最低限の幅を確保して縦一列になるのを防ぐ */
-    min-width: 280px; 
-}
-
-.author-card.reverse { flex-direction: row-reverse; }
-
-@media (max-width: 768px) {
-    .author-card { 
-        flex-direction: column; 
-        text-align: center;
-        padding: 2rem;
-    }
-    .author-card.reverse { flex-direction: column; }
-    .author-info { min-width: 100%; }
-}
-
-/* --- Hero Section 修正 --- */
-.hero-overlay { 
-    position: absolute; 
-    inset: 0; 
-    background: rgba(255, 255, 255, 0); /* 0.65 から 0 に変更して曇りを除去 */
-    z-index: 2; 
-}
-
-
-.hero-content h1 { 
-    font-size: clamp(3rem, 10vw, 5.5rem); 
-    letter-spacing: -2px; 
-    text-shadow: 0 2px 10px rgba(255,255,255,0.5); /* 軽く影を落とす */
 }
