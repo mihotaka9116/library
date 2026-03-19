@@ -263,3 +263,33 @@ html, body {
 .form-group textarea:focus {
     border-bottom-color: var(--navy);
 }
+
+/* --- Library: Book Grid 基本設定 --- */
+.book-grid { 
+    display: grid; 
+    /* デフォルト（PC）は横に並べる */
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); 
+    gap: 3rem; 
+    margin-top: 4rem; 
+    justify-items: center; 
+}
+
+/* --- スマホ & iPad mini (幅 820px 以下) の設定 --- */
+@media (max-width: 820px) {
+    .book-grid {
+        /* 縦1列に強制する */
+        grid-template-columns: 1fr; 
+        gap: 4rem; /* 縦に並ぶので、間隔を少し広げてゆとりを持たせる */
+    }
+
+    .book-item {
+        /* 1列のときに本が小さくなりすぎないよう、サイズを少し大きく調整 */
+        width: 220px; 
+        height: 310px;
+    }
+
+    .section-title {
+        font-size: 2.2rem; /* タイトルも少しコンパクトに */
+        margin-bottom: 2.5rem;
+    }
+}
