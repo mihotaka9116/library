@@ -40,7 +40,7 @@ header { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(25
 .hero-bg { 
     position: absolute; inset: 0; 
     /* サイトイメージに近い「開いた古い本」の画像 */
-    background: url('baloon.jpg') center/cover;
+    background: url('galasu.jpg') center/cover;
     z-index: 1;
 }
 .hero-overlay { position: absolute; inset: 0; background: rgba(255, 255, 255, 0.65); z-index: 2; }
