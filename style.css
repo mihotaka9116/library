@@ -194,3 +194,32 @@ html, body {
 .modal-inner {
     flex-direction: column;
 }
+
+/* --- Contact Card 修正版（PC） --- */
+.contact-card { 
+    background: var(--navy); 
+    color: white; 
+    border-radius: 3rem; 
+    display: grid; 
+    grid-template-columns: 1fr 1.5fr; 
+    overflow: hidden; 
+    /* 修正: 強い影を、非常に薄く柔らかい影に変更 */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+}
+
+.contact-info { 
+    padding: 4rem; 
+    background: rgba(255,255,255,0.03); 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+}
+
+/* 右側のフォームエリアを完全に白く */
+.contact-form { 
+    padding: 4rem; 
+    background-color: #ffffff;
+    color: var(--navy); 
+}
