@@ -42,13 +42,13 @@ const authors = [
     {
         name: "寺山修司",
         bio: "歌人、劇作家、演出家。「言葉の魔術師」と呼ばれ、多岐にわたる分野で前衛的な表現を追求しました。",
-        image: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=400",
+        image: "book.jpg",
         works: ["田園に死す", "書を捨てよ、町へ出よう"]
     },
     {
         name: "室生犀星",
         bio: "詩人、小説家。抒情的な詩風で知られ、自然や故郷、そして人間への深い愛を綴りました。",
-        image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=400",
+        image: "baloon.jpg",
         works: ["抒情小曲集", "愛の詩集"]
     }
 ];
