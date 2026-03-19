@@ -293,3 +293,63 @@ html, body {
         margin-bottom: 2.5rem;
     }
 }
+
+/* --- スマホ & iPad mini 用 (追加・上書き) --- */
+@media (max-width: 820px) {
+    /* 1. Conceptのタイトルを中央寄せ */
+    #concept .section-title {
+        text-align: center;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    /* Conceptのテキストブロック全体も中央寄せ */
+    .concept-text {
+        text-align: center;
+        padding: 0 1rem;
+    }
+
+    /* 2. 室生犀星（および全著者）の写真を中央寄せ */
+    .author-card {
+        flex-direction: column; /* 縦並び */
+        text-align: center; /* テキストを中央寄せ */
+        justify-content: center;
+        align-items: center; /* 要素を中央寄せ */
+    }
+
+    .author-img {
+        margin: 0 auto 2rem auto; /* 左右マージンautoで中央、下に余白 */
+    }
+
+    /* 著者情報ブロックの中身も中央寄せ */
+    .author-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    /* 主な著書のタグも中央寄せ */
+    .author-info div[style*="display:flex"] {
+        justify-content: center;
+    }
+
+    /* 3. メッセージ送信ボタンを中央寄せ */
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* フォーム内の要素を中央寄せ */
+    }
+
+    .form-group {
+        width: 100%; /* 入力欄は幅いっぱい */
+    }
+
+    .btn-submit {
+        margin: 2rem auto 0 auto; /* 左右マージンautoで中央 */
+        display: block;
+        width: auto; /* ボタン幅は文字に合わせる */
+        padding: 1rem 3rem;
+    }
+}
