@@ -55,19 +55,11 @@ const authors = [
 
 // --- Functions ---
 
-function initApp() {
-    renderBooks();
-    renderAuthors();
-    setupEventListeners();
-    // @ts-ignore
-    if (typeof AOS !== 'undefined') AOS.init({ duration: 1000, once: true });
-}
-
 function renderBooks() {
     const grid = document.getElementById('bookGrid');
     if (!grid) return;
     grid.innerHTML = poems.map((p, i) => `
-        <div class="book-item" data-aos="fade-up" data-aos-delay="${i * 100}" onclick="openModal('${p.id}')">
+        <div class="book-item" data-aos="fade-up" data-aos-delay="${i * 100}" onclick="openPoemModal('${p.id}')">
             <div class="book-inner">
                 <div class="book-back">
                     <p>${p.content.substring(0, 40)}...</p>
@@ -99,35 +91,8 @@ function renderAuthors() {
     `).join('');
 }
 
-function setupEventListeners() {
-    const toggle = document.getElementById('menuToggle');
-    const menu = document.getElementById('mobileMenu');
-    const modal = document.getElementById('poemModal');
-    const close = document.querySelector('.close-modal');
-
-    toggle?.addEventListener('click', () => {
-        toggle.classList.toggle('active');
-        menu?.classList.toggle('active');
-    });
-
-    menu?.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-            toggle?.classList.remove('active');
-            menu.classList.remove('active');
-        });
-    });
-
-    close?.addEventListener('click', () => {
-        if (modal) modal.style.display = 'none';
-    });
-
-    window.addEventListener('click', (e) => {
-        if (e.target === modal && modal) modal.style.display = 'none';
-    });
-}
-
-// @ts-ignore
-window.openModal = (id: string) => {
+// モーダルを開く関数
+window.openPoemModal = function(id) {
     const poem = poems.find(p => p.id === id);
     const modal = document.getElementById('poemModal');
     const body = document.getElementById('modalBody');
@@ -149,4 +114,30 @@ window.openModal = (id: string) => {
     modal.style.display = 'flex';
 };
 
-initApp();
+// 初期化
+document.addEventListener('DOMContentLoaded', () => {
+    renderBooks();
+    renderAuthors();
+    
+    // AOSの初期化
+    if (typeof AOS !== 'undefined') AOS.init({ duration: 1000, once: true });
+
+    // ハンバーガーメニュー
+    const toggle = document.getElementById('menuToggle');
+    const menu = document.getElementById('mobileMenu');
+    toggle?.addEventListener('click', () => {
+        toggle.classList.toggle('active');
+        menu?.classList.toggle('active');
+    });
+
+    // モーダル閉じる
+    const close = document.querySelector('.close-modal');
+    const modal = document.getElementById('poemModal');
+    close?.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) modal.style.display = 'none';
+    });
+});
