@@ -195,37 +195,37 @@ html, body {
     flex-direction: column;
 }
 
-/* --- Contact Card 再修正版 --- */
-.contact-card { 
-    background: var(--navy); 
-    color: white; 
-    border-radius: 3rem; 
-    display: grid; 
-    grid-template-columns: 1fr 1.5fr; 
-    overflow: hidden; 
-    
-    /* 修正箇所：ぼかし距離を大きくし(60px)、透明度を極限まで下げる(0.03) */
-    /* これにより「線」ではなく「ぼんやりとした空気感」になります */
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.03); 
-    
-    /* 境界線が線として見えている可能性を排除 */
-    border: none; 
-}
+/* --- コンタクトカードの右端の「線」を消す修正 --- */
 
-/* フォーム側のエリア */
-.contact-form { 
-    padding: 4rem; 
-    background-color: #ffffff; 
-    color: var(--navy);
-    /* フォーム側にも境界線がないことを明示 */
+.contact-card {
+    /* 1. 影を完全にゼロにする（影が端で線に見えるのを防ぐ） */
+    box-shadow: none;
+    
+    /* 2. 枠線を確実に消す */
     border: none;
+    outline: none;
+    
+    /* 3. 親要素の背景色による干渉を防ぐ */
+    margin: 0 auto;
+    width: 100%;
 }
 
-/* スマホ・iPad用の調整（@media (max-width: 768px) 内） */
-@media (max-width: 768px) {
-    .contact-card {
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02); /* スマホではさらに薄く */
-        margin: 0 auto;
-        border: none;
+.contact-form {
+    /* 4. フォーム自体の枠線もリセット */
+    border: none;
+    
+    /* 5. わずかに（0.5px〜1px）だけ要素を広げて、
+       親要素の背景色が右端から漏れ出るのを防ぐ */
+    margin-right: -1px; 
+    padding-right: calc(4rem + 1px);
+}
+
+/* スマホ・iPad用の微調整 */
+@media (max-width: 1180px) {
+    .contact-form {
+        margin-right: 0;
+        padding-right: 1.5rem;
+        /* スマホ時は下が紺色になるのを防ぐため、下にも-1px */
+        margin-bottom: -1px; 
     }
 }
