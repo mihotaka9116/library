@@ -6,13 +6,14 @@
     <title>My Poem - Digital Library</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Shippori+Mincho&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="/src/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
         <div class="container nav-container">
             <a href="#" class="logo">My Poem</a>
+            
             <nav class="desktop-nav">
                 <ul>
                     <li><a href="#concept">Concept</a></li>
@@ -21,6 +22,7 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
+
             <button class="menu-toggle" id="menuToggle">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -41,13 +43,16 @@
         </nav>
     </div>
 
+    <!-- Hero -->
     <section class="hero">
+        <div class="hero-bg"></div>
         <div class="hero-content" data-aos="fade-up">
             <p class="hero-sub">Fragments of Words</p>
             <h1>My Poem</h1>
         </div>
     </section>
 
+    <!-- Concept -->
     <section id="concept" class="section">
         <div class="container grid-2">
             <div class="concept-visual" data-aos="fade-right">
@@ -62,6 +67,7 @@
         </div>
     </section>
 
+    <!-- Library -->
     <section id="library" class="section bg-white">
         <div class="container">
             <h2 class="section-title text-center">Library</h2>
@@ -69,6 +75,7 @@
         </div>
     </section>
 
+    <!-- Authors -->
     <section id="authors" class="section">
         <div class="container">
             <h2 class="section-title text-center">Authors</h2>
@@ -76,6 +83,7 @@
         </div>
     </section>
 
+    <!-- Contact -->
     <section id="contact" class="section bg-white">
         <div class="container">
             <h2 class="section-title text-center">Contact</h2>
@@ -115,6 +123,6 @@
 
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
