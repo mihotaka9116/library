@@ -91,7 +91,6 @@ function renderAuthors() {
     `).join('');
 }
 
-// モーダルを開く関数
 window.openPoemModal = function(id) {
     const poem = poems.find(p => p.id === id);
     const modal = document.getElementById('poemModal');
@@ -114,29 +113,17 @@ window.openPoemModal = function(id) {
     modal.style.display = 'flex';
 };
 
-// 初期化
+// --- 初期化 ---
 document.addEventListener('DOMContentLoaded', () => {
     renderBooks();
     renderAuthors();
-    
-    // AOSの初期化
     if (typeof AOS !== 'undefined') AOS.init({ duration: 1000, once: true });
 
-    // ハンバーガーメニュー
-    const toggle = document.getElementById('menuToggle');
-    const menu = document.getElementById('mobileMenu');
-    toggle?.addEventListener('click', () => {
-        toggle.classList.toggle('active');
-        menu?.classList.toggle('active');
-    });
-
-    // モーダル閉じる
     const close = document.querySelector('.close-modal');
     const modal = document.getElementById('poemModal');
     close?.addEventListener('click', () => {
         modal.style.display = 'none';
     });
-
     window.addEventListener('click', (e) => {
         if (e.target === modal) modal.style.display = 'none';
     });
