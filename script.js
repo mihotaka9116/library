@@ -160,44 +160,41 @@ window.onclick = (event) => {
     }
 };
 
-// --- 6. スマホメニュー制御ロジック (修正版) ---
+// --- 6. スマホメニュー制御ロジック (完全版) ---
 
-// メニューの状態を切り替える関数
 function toggleMenu() {
-    const isOpened = menuToggle.classList.contains('active');
+    // 現在の状態を判定
+    const isOpen = mobileMenu.classList.contains('active');
     
-    if (!isOpened) {
-        // メニューを開く
+    if (!isOpen) {
+        // 開く
         menuToggle.classList.add('active');
         mobileMenu.classList.add('active');
-        document.body.style.overflow = 'hidden'; // スクロール禁止
+        document.body.style.overflow = 'hidden';
     } else {
-        // メニューを閉じる
-        menuToggle.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        document.body.style.overflow = ''; // スクロール再開
-    }
-}
-
-// ハンバーガーボタンをクリックした時
-if (menuToggle) {
-    menuToggle.onclick = (e) => {
-        e.preventDefault();
-        toggleMenu();
-    };
-}
-
-// メニュー内の各リンクをクリックした時（自動で閉じる）
-mobileMenuLinks.forEach(link => {
-    link.onclick = () => {
-        // リンク先へ飛ぶ前にメニューを閉じる
+        // 閉じる
         menuToggle.classList.remove('active');
         mobileMenu.classList.remove('active');
         document.body.style.overflow = '';
-    };
+    }
+}
+
+// ハンバーガーボタン（三本線/×ボタン共通）のクリックイベント
+if (menuToggle) {
+    menuToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        toggleMenu();
+    });
+}
+
+// メニュー内のリンクをクリックした時、確実に閉じる
+mobileMenuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    });
 });
-
-
 // --- 7. お問い合わせフォームの送信シミュレーション ---
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
