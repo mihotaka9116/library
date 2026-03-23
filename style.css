@@ -202,8 +202,8 @@ html, body {
     color: white; 
     border-radius: 2rem; /* 角丸を少し控えめにし、隙間が出にくくする */
     overflow: hidden; 
-    display: flex; /* gridからflexに変更（隙間対策に強力） */
-    flex-direction: column; /* 基本は縦並び */
+    display: flex; /
+    flex-direction: column; /
     border: none;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     width: 100%;
